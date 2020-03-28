@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="App1.Page2">
+    
+    
+    <ContentPage.Content>
+
+        <StackLayout>
+            <Label Text="Zemlejvid 1:Pot do ŠČV-ja od avtobusne postaje" HorizontalOptions="Center" TextColor="Black" FontSize="Medium"/>
+            <ImageButton  Clicked="Button_Clicked" Source="scv" Aspect="AspectFill"/>
+            <Label Text="Zemljevid 2:Pot okoli jezera" TextColor="Black" HorizontalOptions="Center" FontSize="Medium" />
+            <ImageButton  Clicked="Button_Clicked_1" Source="jez" Aspect="AspectFill"/>
+            <Button Text="Nazaj na prvo stran" Clicked="Button_Clicked_2"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Large"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>
