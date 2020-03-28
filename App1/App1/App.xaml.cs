@@ -11,7 +11,7 @@ namespace App1
         public static double latitude = 0;
         public static double longitude = 0;
 
-        public static string DatabaseFilename = "potibaza.db";
+        public static string DatabaseFilename = "potibazamain.db";
 
         public App()
         {

@@ -7,19 +7,6 @@
         <StackLayout>
             <maps:Map x:Name="mapdemo" MapType="Street" IsShowingUser="True"  />
             <Button Text="Začni s potjo" Clicked="Button_Clicked" />
-            <ListView x:Name="ja">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout>
-                                <Label Text="{Binding langtitude}" /> 
-                                <Label Text="{Binding longtitude}" />
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-           
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

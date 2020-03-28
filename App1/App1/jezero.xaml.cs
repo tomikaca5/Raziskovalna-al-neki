@@ -14,89 +14,54 @@ namespace App1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class jezero : ContentPage
     {
+        int pot_id = 2;
+
         int st = 1;
+
+        List<koordinate> podatki = new List<koordinate>();
+
+        List<tocke> t_list = new List<tocke>();
+
+        Database db = new Database();
+
+        bool na_tocki;
+
+        bool played;
         public jezero()
         {
             InitializeComponent();
             mapjez.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(46.374162, 15.102618), Distance.FromKilometers(1)));
 
+            Narisi_pot();
+        }
 
+        private async void Narisi_pot()
+        {
+            podatki = await db.GetkoordinatepotAsync(pot_id);
 
-            Polyline polika = new Polyline
+            for (int i = 0; i < (podatki.Count - 1); i++)
             {
-                StrokeColor = Color.Red,
-                StrokeWidth = 12,
-                Geopath =
+                koordinate a = podatki[i];
+                double longic = a.longtitude;
+                double lant = a.latitude;
+
+                int o = i + 1;
+                koordinate b = podatki[o];
+                double longic2 = b.longtitude;
+                double lant2 = b.latitude;
+
+                Polyline poli = new Polyline
                 {
-                    new Position(46.374009, 15.102595),
-                    new Position(46.374311, 15.102619),
-                    new Position(46.374453, 15.102356),
-                    new Position(46.374660, 15.102115),
-                    new Position(46.374962, 15.101933),
-                    new Position(46.375526, 15.101761),
-
-                    new Position(46.375854, 15.101571),
-                    new Position(46.376082, 15.101346),
-                    new Position(46.376354, 15.101040),
-                    new Position(46.376593, 15.100871),
-                    new Position(46.376819, 15.100807),
-                    new Position(46.377087, 15.100866),
-
-                    new Position(46.377509, 15.100981),
-                    new Position(46.377857, 15.101120),
-                    new Position(46.377921, 15.101213),
-                    new Position(46.377771, 15.102112),
-                    new Position(46.377662, 15.103029),
-                    new Position(46.377594, 15.103346),
-
-                    new Position(46.377416, 15.103767),
-                    new Position(46.377164, 15.104405),
-                    new Position(46.377007, 15.104815),
-                    new Position(46.376926, 15.104968),
-                    new Position(46.376619, 15.105330),
-                    new Position(46.376367, 15.105826),
-
-
-                    new Position(46.375949, 15.106789),
-                    new Position(46.375990, 15.106920),
-                    new Position(46.376014, 15.107076),
-                    new Position(46.376177, 15.107304),
-                    new Position(46.376271, 15.107739),
-                    new Position(46.376232, 15.108326),
-
-                    new Position(46.376300, 15.108581),
-                    new Position(46.376496, 15.109115),
-                    new Position(46.376557, 15.109633),
-                    new Position(46.376359, 15.110100),
-                    new Position(46.376241, 15.110135),
-                    new Position(46.375745, 15.109848),
-
-                    new Position(46.375075, 15.109682),
-                    new Position(46.374742, 15.109685),
-                    new Position(46.374505, 15.109792),
-                    new Position(46.374283, 15.109872),
-                    new Position(46.374141, 15.109810),
-                    new Position(46.374058, 15.109628),
-
-                    new Position(46.374051, 15.109379),
-                    new Position(46.374034, 15.109062),
-                    new Position(46.373723, 15.108037),
-                    new Position(46.373664, 15.107753),
-                    new Position(46.373721, 15.107268),
-                    new Position(46.373771, 15.106887),
-
-                    new Position(46.373880, 15.106313),
-                    new Position(46.373919, 15.105779),
-                    new Position(46.373843, 15.105248),
-                    new Position(46.373821, 15.105157),
-                    new Position(46.373418, 15.105280),
-                    new Position(46.373035, 15.105610),
-                }
-
-
-
-            };
-            mapjez.MapElements.Add(polika);
+                    StrokeColor = Color.DodgerBlue,
+                    StrokeWidth = 12,
+                    Geopath =
+                    {
+                        new Position(lant,longic),
+                        new Position(lant2,longic2)
+                    }
+                };
+                mapjez.MapElements.Add(poli);
+            }
         }
         async void pot2()
         {
